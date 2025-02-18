@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: edu-app
+  name: edu-app2
   namespace: group1-team7
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: edu-app
+      app: edu-app2
   template:
     metadata:
       labels:
-        app: edu-app
+        app: edu-app2
     spec:
       containers:
-      - name: edu-app
+      - name: edu-app2
         image: k8s-vga-worker1:5000/group1-team7-eduapp2:latest
         imagePullPolicy: Always #IfNotPresent
         ports:
@@ -24,11 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: edu-app
+  name: edu-app2
   namespace: group1-team7
 spec:
   selector:
-    app: edu-app
+    app: edu-app2
   ports:
     - protocol: TCP
       port: 80

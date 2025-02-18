@@ -1,0 +1,37 @@
+# springboot-app.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-app
+  namespace: group1-team7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edu-app
+  template:
+    metadata:
+      labels:
+        app: edu-app
+    spec:
+      containers:
+      - name: edu-app
+        image: k8s-vga-worker1:5000/group1-team7-eduapp2:latest
+        imagePullPolicy: Always #IfNotPresent
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edu-app
+  namespace: group1-team7
+spec:
+  selector:
+    app: edu-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9090
+      nodePort: 30710
+  type: NodePort

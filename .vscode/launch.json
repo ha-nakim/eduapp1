@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-EduApplication<edu>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.mobigen.edu.EduApplication",
+      "projectName": "edu",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

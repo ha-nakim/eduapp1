@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "group1-team7-eduapp2"
         IMAGE_TAG = "latest"
         NAMESPACE = "group1-team7"
-        JAVA_HOME = "/home/eva/user/yoon/edu/jdk-21.0.5"
+        JAVA_HOME = "/usr/local/java21"
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
     stages {

@@ -29,7 +29,7 @@ pipeline {
                     // Gradle 빌드 실행
                     // sh './gradlew clean build'
                     // Maven 빌드 실행 (위 두줄 주석처리 및 아래 한줄 주석해제)
-                    sh 'mvn clean package -DskipTests' -Ppod
+                    sh 'mvn clean package -DskipTests -Ppod'
                 }
             }
         }
@@ -45,6 +45,14 @@ pipeline {
                 script {
                     // Docker 이미지를 Registry Server에 푸시
                     sh "docker push ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
+                }
+            }
+        }
+        stage('delete Deploy and Service') {
+            steps {
+                script {
+                    // Kubernetes Deployment and Service 생성 및 적용 (1일차 교육때 사용한 deploy & service 생성 yaml 파일 등록하여 사용)
+                    sh "kubectl delete -f ./yaml/edu_app.yaml -n ${NAMESPACE}"
                 }
             }
         }
